@@ -7,29 +7,20 @@
 
 <style>
 
+    * {
+
+      box-sizing: border-box;
+    }
+
     h1 {
       font-size: 2em;
       font-family: Helvetica, sans-serif;
 
     }
     
-    #box1 {
-      max-width: 940px;
-      height: 540px;
-      margin: 10px auto;
-      padding: 10% 5%;  
-      border: 5px solid #000;
-      text-align: center;
-
-}
-
-    #box2 {
-      max-width: 940px;
-      height:540px;
-      margin: 10px auto;
-      padding: 10% 5%;  
-      border: 5px solid #000;
-      text-align: center;
+    .main-wrapper {
+      max-width: 960px;
+      margin: auto;
 
 }
 
@@ -38,7 +29,7 @@
       text-align: center;
       margin: 0;
       width: 100%;
-      padding: 20px 0;
+      padding: 20px;
       background: orange;
       border: 5px solid #222;
       text-shadow: 2px 2px 2px #222;
@@ -59,13 +50,63 @@
       margin: auto;
     }
 
-    #box1, #box2 {
+    .box {
+      height: 800px;
+      border: 5px solid #000;
       color: orange;
       background-color: #222;
       border-top: 5px solid;
       box-shadow: 0 10px 10px #222;
-      padding: 10% 0;
+      padding: 5% 0;
       margin: 10% 0;
+
+    }
+
+    .small-box1 {
+      width: 20%;
+      padding: 0px;
+      border: 2px solid;
+      display: inline-block;
+      height: 70px;
+      margin: 2%;
+    }
+
+    .small-box2 {
+      width: 20%;
+      padding: 0px;
+      margin: 2.5%;
+      border: 2px solid;
+      height: 70px;
+      float: left;
+  
+    }
+
+    .flex-wrapper {
+      clear: both;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+     }
+
+    .small-box3 {
+      flex-grow: 1;
+      width: 20%;
+      padding: 2.5%;
+      margin: 10px 2.5%;
+      border: 2px solid;
+      height: 70px;
+  
+    }
+
+    .small-box3::hover {
+        flex-grow: 2;
+
+    }
+
+    .group::after {
+      content: "";
+      display: table;
+      clear: both;
 
     }
 
@@ -74,17 +115,133 @@
 </head>
 
   <body>
+  <div class="main-wrapper">
     <header>
       <h1>Ben Paterson</h1>
       <h2>Designer</h2>
     </header>
       
-    <div class="primary-content">
-      <div id="box1">
+    <div class="primary-content group">
+      <div class="box">
         <h2>Test text.</h2>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+
+
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+           <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+
+        <div class="flex-wrapper">
+          
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+        </div>
+
+
+
       </div>
-      <div id="box2">
+      <div class="box">
         <h2>Testing testing.</h2>
+        <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+          <div class="small-box1">
+          </div>
+
+
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+           <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+          <div class="small-box2">
+          </div>
+
+        <div class="flex-wrapper">
+          
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+          <div class="small-box3">
+          </div>
+        </div>
+
+
+
+      </div>
       </div>
     </div>
     
@@ -92,5 +249,6 @@
     <footer>
       <p>&copy; 2015 Ben Paterson.</p>
     </footer>
+  </div>
   </body>
 </html>
