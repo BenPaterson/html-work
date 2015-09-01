@@ -45,24 +45,44 @@
 }
 
     .primary-content {
-      width: 60%;
+      /* Let's let the boxes keep 100% width and use this wrapper to dictate what that width is.
+
+         When the browser is resized, we rarely want our content to ALWAYS shrink/expand.  Instead, we will use breakpoints to do this, based upon widths that make sense for our content (i.e. things will stay put until we reach certain thresholds where we provide new rules.)  This is called "responsive" design. 
+      
+      I tend to use em units for widths, margins and padding of container elements that should keep their size.  Ems are relative to the element's font-size, so things will stay in place when you resize the browser (width/rl margins) or the content size grows (height/tb margin).  Yet, ems ARE a relative unit, so they provide flexibility.  Often, one thing we change when coding for different devices is font-size, so sometimes the widths, paddings and margins will simply fall into place for us.  This is a debated topic, and you can find all sorts of different approaches to how units can be used to make things nice.  
+       
+       My friend Brad Frost one of the leading voices on responsive design, and he has a really great site with resources and stuff here:
+       
+       http://bradfrost.github.io/this-is-responsive/
+
+       */
+      width: 60em;
       text-align: center;
       margin: auto;
     }
 
     .box {
-      height: 800px;
+      /* Removing height here, because the contents fill the box to make the height */
+      /* height: 800px; */
+
+      /*  MOVED TO PRIMARY-CONTENT  */
+      /* width: 40em; */
       border: 5px solid #000;
       color: orange;
       background-color: #222;
       border-top: 5px solid;
       box-shadow: 0 10px 10px #222;
-      padding: 5% 0;
-      margin: 10% 0;
+
+      /* Using ems here to keep things from moving around. */
+      padding: 1em 0;
+      /* standard method of horizontally centering block-level elements */
+      margin: 3em auto;
 
     }
 
-    .small-box1 {
+    .small-box1,
+    .inline-block-grid > div {
+      /* it makes sense to use percentages here, because our parent container is going to maintain a set width.  Therefore, the boxes will only change size whenever we change the size of the parent (which we will do with media queries) */
       width: 20%;
       padding: 0px;
       border: 2px solid;
@@ -71,7 +91,14 @@
       margin: 2%;
     }
 
-    .small-box2 {
+    .float-grid {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .small-box2,
+    .float-grid > li {
       width: 20%;
       padding: 0px;
       margin: 2.5%;
@@ -88,7 +115,8 @@
       flex-wrap: wrap;
      }
 
-    .small-box3 {
+    .small-box3,
+    .flex-wrapper > article {
       flex-grow: 1;
       width: 20%;
       padding: 2.5%;
@@ -98,7 +126,8 @@
   
     }
 
-    .small-box3::hover {
+    .small-box3::hover,
+    .flex-wrapper > article:hover {
         flex-grow: 2;
 
     }
@@ -182,62 +211,46 @@
 
 
       </div>
+
+      <!-- Generally, for these types of scenarios, I would always wrap the grid and give a class to the parent item.  That way, it is unnecessary to add a class to each item in the collection.  You will see that I added css rules above to account for this (I didn't remove the ones you already have for the boxes above). 
+      
+      Also, semantics are an important aspect of html.  It is generally best to use markup that describes things in the best possible way.  You can see that I used ul/li and article/section for the last two grids.  Sometimes these make more sense to use than a <div>.  One great benefit of ul/li is that, when you strip away all styling, the items show up as a nice, bulleted list.  
+      -->
       <div class="box">
         <h2>Testing testing.</h2>
-        <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-          <div class="small-box1">
-          </div>
-
-
-          <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-           <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-          <div class="small-box2">
-          </div>
-
-        <div class="flex-wrapper">
-          
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
-          <div class="small-box3">
-          </div>
+        <div class="inline-block-grid">
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
+            <div>Contents</div>
         </div>
+
+
+        <ul class="float-grid">
+            <li>Contents</li>
+            <li>Contents</li>
+            <li>Contents</li>
+            <li>Contents</li>
+            <li>Contents</li>
+            <li>Contents</li> 
+            <li>Contents</li>
+            <li>Contents</li>
+        </ul>
+
+        <section class="flex-wrapper">
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+          <article>Contents</article>
+        </section>
 
 
 
@@ -250,5 +263,13 @@
       <p>&copy; 2015 Ben Paterson.</p>
     </footer>
   </div>
+
+  <!-- OK, next, read up on css media queries.  Set some breakpoints to alter the width of primary-content so it fits at smaller widths.  You should only need a couple of breakpoints.  Instead of the boxes growing and shrinking as they do now (we are using percentages), let's keep them the same size, no matter how wide the container is. Essentially, when you get to certain breakpoints, the number of columns will shrink, and the number of rows will grow, because the box on the right side will pop down to the next row.  
+
+        There's no "correct" answer to this;  the main thing is that the content looks good and fits upon changing the width of your browser.  Check out the Google Chrome developer tools.  You will see a "device mode" icon in the top left, and you can mimick the dimensions of popular mobile devices.  This can help get things looking good in different scenarios.  If you get "Firebug" for Firefox, I believe it has a similar tool. 
+
+        At this point, making things look good across an array of mobile devices is one of the most difficult tasks in front-end development.  Thus, it's important to take these problems into consideration early-on.
+  -->   
   </body>
 </html>
+
